@@ -23,6 +23,26 @@ The system also implements client-side failover and automatic reconnection to ma
 - 👥 Multi-user communication
 - 📋 Real-time connected-user updates
 
+## 🖥️ Application Screenshots
+
+### Main Dashboard
+
+![NexaTech Dashboard](assets/screenshots/dashboard.png)
+
+The main dashboard provides role-based login, real-time announcements, student responses and connected-user information.
+
+### Multi-Server Communication
+
+![NexaTech Multi-Server](assets/screenshots/multi-server.png)
+
+The application running across Server 1 and Server 2, demonstrating real-time communication and cross-server synchronization.
+
+### Server Failover
+
+![NexaTech Failover](assets/screenshots/failover.png)
+
+The system detecting a server failure and switching the client connection to another available server.
+
 ## 🏗️ System Architecture
 
 The system uses two application servers connected through Redis Pub/Sub.
