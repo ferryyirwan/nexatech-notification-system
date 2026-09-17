@@ -1,8 +1,8 @@
-﻿# NexaTech Notification System
+# NexaTech Notification System
 
 A distributed real-time notification system built with Node.js, Socket.IO and Redis Pub/Sub for lecturer-student communication.
 
-## ðŸ“Œ Overview
+## Overview
 
 NexaTech Notification System is a distributed real-time communication system developed as an academic project.
 
@@ -10,50 +10,70 @@ The system allows Lecturers to broadcast announcements and Students to receive a
 
 The system also implements client-side failover and automatic reconnection to maintain communication when one application server becomes unavailable.
 
-## âœ¨ Features
+## Features
 
-- ðŸ‘¨â€ðŸ« Lecturer and Student role-based interaction
-- ðŸ“¢ Real-time announcement broadcasting
-- ðŸ’¬ Real-time student responses
-- âš¡ WebSocket communication using Socket.IO
-- ðŸ”„ Redis Pub/Sub for cross-server synchronization
-- ðŸ–¥ï¸ Multi-server architecture
-- ðŸ›¡ï¸ Client-side server failover
-- ðŸ”Œ Automatic reconnection after server failure
-- ðŸ‘¥ Multi-user communication
-- ðŸ“‹ Real-time connected-user updates
+- Lecturer and Student role-based interaction
+- Real-time announcement broadcasting
+- Real-time student responses
+- WebSocket communication using Socket.IO
+- Redis Pub/Sub for cross-server synchronization
+- Multi-server architecture
+- Client-side server failover
+- Automatic reconnection after server failure
+- Multi-user communication
+- Real-time connected-user updates
 
-## ðŸ—ï¸ System Architecture
+## Application Screenshots
+
+### Main Dashboard
+
+![NexaTech Dashboard](assets/screenshots/dashboard.png)
+
+The main dashboard provides role-based login, real-time announcements, student responses and connected-user information.
+
+### Multi-Server Communication
+
+![NexaTech Multi-Server](assets/screenshots/multi-server.png)
+
+The application running across Server 1 and Server 2, demonstrating real-time communication and cross-server synchronization.
+
+### Server Failover
+
+![NexaTech Failover](assets/screenshots/failover.png)
+
+The system detecting a server failure and switching the client connection to another available server.
+
+## System Architecture
 
 The system uses two application servers connected through Redis Pub/Sub.
 
 ```text
-                    â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-                    â”‚      Redis       â”‚
-                    â”‚    Pub / Sub     â”‚
-                    â””â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
-                             â”‚
-              â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-              â”‚                             â”‚
-     â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â–¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”         â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â–¼â”€â”€â”€â”€â”€â”€â”€â”€â”
-     â”‚    Server 1      â”‚         â”‚     Server 2      â”‚
-     â”‚    Port 3000     â”‚         â”‚     Port 3001      â”‚
-     â”‚   Node.js +      â”‚         â”‚   Node.js +       â”‚
-     â”‚    Socket.IO     â”‚         â”‚    Socket.IO      â”‚
-     â””â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜         â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
-              â”‚                             â”‚
-              â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
-                             â”‚
-                     â”Œâ”€â”€â”€â”€â”€â”€â”€â–¼â”€â”€â”€â”€â”€â”€â”€â”€â”
-                     â”‚     Clients    â”‚
-                     â”‚ Lecturer /     â”‚
-                     â”‚    Student     â”‚
-                     â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+                  +----------------+
+                  |     Redis      |
+                  |    Pub/Sub     |
+                  +-------+--------+
+                          |
+             +------------+------------+
+             |                         |
+     +-------+-------+         +-------+-------+
+     |    Server 1   |         |    Server 2   |
+     |    Port 3000  |         |    Port 3001  |
+     |    Node.js    |         |    Node.js    |
+     |    Socket.IO  |         |    Socket.IO  |
+     +-------+-------+         +-------+-------+
+             |                         |
+             +------------+------------+
+                          |
+                  +-------+-------+
+                  |    Clients    |
+                  | Lecturer /    |
+                  |   Student     |
+                  +---------------+
 ```
 
 Redis Pub/Sub allows messages and connected-user information to be synchronized between Server 1 and Server 2.
 
-## ðŸ”„ Failover Mechanism
+## Failover Mechanism
 
 NexaTech includes client-side failover to improve service availability.
 
@@ -64,9 +84,9 @@ When the connected application server becomes unavailable:
 3. The client reconnects automatically.
 4. Communication can continue through the available server.
 
-If both servers are unavailable, the system displays a **"No Server Available"** state.
+If both servers are unavailable, the system displays a "No Server Available" state.
 
-## ðŸ› ï¸ Technologies
+## Technologies
 
 - Node.js
 - Express.js
@@ -77,23 +97,28 @@ If both servers are unavailable, the system displays a **"No Server Available"**
 - CSS
 - JavaScript
 
-## ðŸ“ Project Structure
+## Project Structure
 
 ```text
 nexatech-notification/
-â”œâ”€â”€ public/
-â”‚   â”œâ”€â”€ index.html
-â”‚   â”œâ”€â”€ script.js
-â”‚   â””â”€â”€ style.css
-â”œâ”€â”€ redisClient.js
-â”œâ”€â”€ server1.js
-â”œâ”€â”€ server2.js
-â”œâ”€â”€ package.json
-â”œâ”€â”€ package-lock.json
-â””â”€â”€ README.md
+├── assets/
+│   └── screenshots/
+│       ├── dashboard.png
+│       ├── failover.png
+│       └── multi-server.png
+├── public/
+│   ├── index.html
+│   ├── script.js
+│   └── style.css
+├── redisClient.js
+├── server1.js
+├── server2.js
+├── package.json
+├── package-lock.json
+└── README.md
 ```
 
-## ðŸš€ How to Run
+## How to Run
 
 ### 1. Install Dependencies
 
@@ -149,7 +174,7 @@ Open the application in a web browser and connect as a Lecturer or Student.
 
 The system can then be tested using multiple browser sessions to simulate multiple users and different servers.
 
-## ðŸ§ª Fault Tolerance Testing
+## Fault Tolerance Testing
 
 The system can be tested by:
 
@@ -161,7 +186,7 @@ The system can be tested by:
 6. Observing the client failover and automatic reconnection.
 7. Verifying that communication continues through the available server.
 
-## ðŸŽ¯ Project Purpose
+## Project Purpose
 
 The project demonstrates the implementation of real-time communication and distributed application concepts, including:
 
@@ -173,7 +198,7 @@ The project demonstrates the implementation of real-time communication and distr
 - Real-time user synchronization
 - Role-based interaction
 
-## ðŸ‘¨â€ðŸ’» Developer
+## Developer
 
 **Ferry Irwan Shah bin Azman**
 
