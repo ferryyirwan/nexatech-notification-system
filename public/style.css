@@ -1,0 +1,388 @@
+/* ---------- GLOBAL ---------- */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+}
+
+body{
+    background:#0F172A;
+    color:#F8FAFC;
+    min-height:100vh;
+}
+
+.container{
+    width:92%;
+    max-width:1400px;
+    margin:30px auto;
+}
+
+/* ---------- HEADER ---------- */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+header h1{
+    font-size:32px;
+    font-weight:700;
+}
+
+.server-status{
+    background:#16A34A;
+    color:#fff;
+    padding:12px 22px;
+    border-radius:50px;
+    font-weight:bold;
+    box-shadow:0 8px 20px rgba(22,163,74,.35);
+}
+
+/* ---------- LAYOUT ---------- */
+.main{
+    display:flex;
+    gap:25px;
+}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar{
+    width:300px;
+    background:#1E293B;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+
+.sidebar h2,
+.announcement-section h2,
+.response-section h2,
+.users h3{
+    margin-bottom:18px;
+}
+
+.sidebar h2,
+.announcement-section h2{
+    color:#FACC15;
+}
+
+.users h3{
+    color:#38BDF8;
+}
+
+.sidebar input[type=text],
+.input-area input{
+    width:100%;
+    padding:14px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    background:#334155;
+    color:#fff;
+}
+
+.sidebar input[type=text]{
+    margin-bottom:18px;
+}
+
+.sidebar input::placeholder,
+.input-area input::placeholder{
+    color:#CBD5E1;
+}
+
+.role{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.sidebar button,
+.input-area button{
+    border:none;
+    border-radius:12px;
+    background:#2563EB;
+    color:#fff;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.sidebar button{
+    width:100%;
+    padding:14px;
+}
+
+.input-area button{
+    width:180px;
+}
+
+.sidebar button:hover,
+.input-area button:hover{
+    background:#1D4ED8;
+    transform:translateY(-2px);
+}
+
+/* ---------- CONTENT ---------- */
+.chat{
+    flex:1;
+    background:#1E293B;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+
+.users{
+    margin-bottom:25px;
+}
+
+.users ul{
+    list-style:none;
+}
+
+.users li{
+    background:#334155;
+    padding:12px 15px;
+    border-radius:10px;
+    margin-bottom:10px;
+}
+
+/* ---------- ANNOUNCEMENT ---------- */
+.announcement-section{
+    margin-bottom:28px;
+}
+
+.announcement-card{
+    background:#1E293B;
+    border:2px solid #2563EB;
+    border-radius:14px;
+    padding:20px;
+    min-height:140px;
+}
+
+.announcement-title{
+    font-size:22px;
+    font-weight:bold;
+    color:#FACC15;
+    margin-bottom:14px;
+}
+
+.announcement-text{
+    font-size:17px;
+    line-height:1.8;
+    margin-bottom:20px;
+}
+
+.announcement-footer{
+    display:flex;
+    justify-content:space-between;
+    color:#CBD5E1;
+    font-size:14px;
+}
+
+.empty-announcement,
+.empty-response{
+    color:#94A3B8;
+    text-align:center;
+    font-style:italic;
+    padding:35px 0;
+}
+
+/* ---------- RESPONSES ---------- */
+.messages{
+    background:#0F172A;
+    border:1px solid #334155;
+    border-radius:14px;
+    padding:18px;
+    max-height:360px;
+    overflow-y:auto;
+}
+
+#responses .message{
+    width:100%;
+    margin-bottom:15px;
+}
+
+.message-card{
+    width:100%;
+    background:#334155;
+    border-left:5px solid #22C55E;
+    border-radius:12px;
+    padding:15px 18px;
+}
+
+.message-header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+}
+
+.message-time{
+    color:#94A3B8;
+    font-size:12px;
+}
+
+.message-body{
+    line-height:1.7;
+}
+
+/* ---------- BADGES ---------- */
+.role-badge{
+    display:inline-block;
+    margin-top:6px;
+    padding:4px 10px;
+    border-radius:20px;
+    background:#334155;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.server-badge{
+    display:inline-block;
+    margin-top:8px;
+    padding:5px 12px;
+    border-radius:20px;
+    color:#fff;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.server1{background:#2563EB;}
+.server2{background:#7C3AED;}
+
+/* ---------- INPUT ---------- */
+.input-area{
+    display:flex;
+    gap:12px;
+    margin-top:20px;
+}
+
+/* ---------- SCROLLBAR ---------- */
+.messages::-webkit-scrollbar{width:8px;}
+.messages::-webkit-scrollbar-thumb{
+    background:#475569;
+    border-radius:20px;
+}
+.messages::-webkit-scrollbar-thumb:hover{
+    background:#64748B;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:900px){
+    .main{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+    }
+
+    .announcement-footer,
+    .message-header{
+        flex-direction:column;
+        gap:8px;
+    }
+
+    .input-area{
+        flex-direction:column;
+    }
+
+    .input-area button{
+        width:100%;
+    }
+}
+
+/* ==========================================
+   CURRENT SESSION
+========================================== */
+
+.current-session{
+
+    margin-top:18px;
+
+    margin-bottom:20px;
+
+    padding:14px;
+
+    background:#334155;
+
+    border-radius:12px;
+
+    border-left:5px solid #38BDF8;
+
+}
+
+.session-title{
+
+    font-size:13px;
+
+    color:#CBD5E1;
+
+    margin-bottom:8px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+}
+
+.session-role{
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    color:white;
+
+}
+
+/* ==========================================
+   ANNOUNCEMENT HISTORY
+========================================== */
+
+.announcement-card{
+
+    max-height:300px;
+
+    overflow-y:auto;
+
+}
+
+.announcement-item{
+
+    background:#273449;
+
+    border-left:5px solid #2563EB;
+
+    border-radius:12px;
+
+    padding:18px;
+
+    margin-bottom:16px;
+
+    transition:.25s;
+
+}
+
+.announcement-item:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.announcement-item:last-child{
+
+    margin-bottom:0;
+
+}
+
+.session-user{
+
+    margin-top:8px;
+
+    color:#CBD5E1;
+
+    font-size:15px;
+
+}

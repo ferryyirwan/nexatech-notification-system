@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>NexaTech Notification System</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div>
+
+            <h1>NexaTech Notification System</h1>
+
+            <p class="subtitle">
+
+                Distributed Real-Time Notification System
+
+            </p>
+
+        </div>
+
+        <div
+            id="serverStatus"
+            class="server-status">
+
+            🟡 Connecting...
+
+        </div>
+
+    </header>
+
+    <!-- MAIN -->
+
+    <div class="main">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <h2>Login</h2>
+
+            <input
+                id="username"
+                type="text"
+                placeholder="Enter username">
+
+            <div class="role">
+
+                <label>
+
+                    <input
+                        type="radio"
+                        name="role"
+                        value="Lecturer">
+
+                    👨‍🏫 Lecturer
+
+                </label>
+
+                <label>
+
+                    <input
+                        type="radio"
+                        name="role"
+                        value="Student"
+                        checked>
+
+                    👨‍🎓 Student
+
+                </label>
+
+            </div>
+
+            <button id="connectBtn">
+
+                Connect
+
+            </button>
+
+            <div id="currentSession" class="current-session">
+
+                <div class="session-title">
+
+                    Current Session
+
+                </div>
+
+                <div class="session-role">
+
+                    ⚪ Not Connected
+
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="users">
+
+                <h3>
+
+                    🟢 Online Users
+
+                </h3>
+
+                <ul id="userList">
+
+                </ul>
+
+            </div>
+
+        </aside>
+
+        <!-- CHAT -->
+
+<section class="chat">
+
+    <!-- ANNOUNCEMENT -->
+
+    <div class="announcement-section">
+
+        <h2>
+
+            📢 Latest Announcement
+
+        </h2>
+
+        <div
+            id="announcementCard"
+            class="announcement-card">
+
+            <div class="empty-announcement">
+
+                No announcement has been posted yet.
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RESPONSES -->
+
+    <div class="response-section">
+
+        <h2>
+
+            💬 Student Responses
+
+        </h2>
+
+        <div
+            id="responses"
+            class="messages">
+
+            <div class="empty-response">
+
+                No responses yet.
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- INPUT -->
+
+    <div class="input-area">
+
+        <input
+            id="messageInput"
+            type="text"
+            placeholder="Type message...">
+
+        <button
+            id="sendBtn">
+
+            Send
+
+        </button>
+
+    </div>
+
+</section>
+
+    </div>
+
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+
+
+</html>
